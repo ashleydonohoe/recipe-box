@@ -7,3 +7,20 @@ body {
 .ingredients-input {
   height: 50px;
 }
+
+.ingredient {
+  border: 1px solid lightgrey;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.ingredient-title {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.panel-body .btn {
+  margin: 10px 5px 10px 0;
+}
