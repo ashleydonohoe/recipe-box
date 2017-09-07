@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RecipeList from "./components/RecipeList";
 import Recipes from "./Recipes";
+import AddRecipe from "./components/AddRecipe";
 
 class App extends Component {
   render() {
@@ -8,7 +9,7 @@ class App extends Component {
       <div className="container">
         <h1 className="text-center">Recipe Box</h1>
         <RecipeList recipes={Recipes}/>
-        <button className="btn btn-primary">Add Recipe</button>
+        <AddRecipe/>
       </div>
     );
   }
