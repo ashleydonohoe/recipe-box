@@ -1,10 +1,7 @@
 import React from 'react';
+import EditRecipe from "./EditRecipe";
 
 class RecipeItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const name = this.props.recipe.name;
     const ingredients = this.props.recipe.ingredients;
@@ -20,15 +17,17 @@ class RecipeItem extends React.Component {
               </div>
               <div id="collapseOne" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                   <div className="panel-body">
-                  <h4 className="text-center ingredient-title">Ingredients</h4>
-                  <hr/>
-                  {ingredients.map(function(ingredient, index) {
-                    return (
-                      <p className="ingredient" key={index}>{ingredient}</p>
-                    )
-                  })}
-                  <button className="btn btn-danger">Delete</button>
-                  <button className="btn btn-default">Edit</button>
+                    <h4 className="text-center ingredient-title">Ingredients</h4>
+                    <hr/>
+                    {ingredients.map(function(ingredient, index) {
+                      return (
+                        <p className="ingredient" key={index}>{ingredient}</p>
+                      )
+                    })}
+                    <div className="button-group">
+                      <EditRecipe/>
+                      <button className="btn btn-danger">Delete</button>
+                    </div>
                   </div>
               </div>
           </div>
