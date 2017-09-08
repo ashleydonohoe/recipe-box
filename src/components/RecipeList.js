@@ -2,6 +2,12 @@ import React from 'react';
 import RecipeItem from "./RecipeItem";
 
 class RecipeList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.editRecipe = this.editRecipe.bind(this);
+    this.deleteRecipe = this.deleteRecipe.bind(this);
+  }
+
   editRecipe() {
     console.log("Editing Recipe");
   }
@@ -13,7 +19,13 @@ class RecipeList extends React.Component {
   render() {
     const recipes = this.props.recipes;
     return (
-      <RecipeItem recipe={recipes[0]} onEdit={this.editRecipe.bind(this)} onDelete={this.deleteRecipe.bind(this)}/>
+      <div>
+        {recipes.map(function(recipe, index) {
+          return (
+            <RecipeItem number={index} key={index} recipe={recipe} onEdit={this.editRecipe} onDelete={this.deleteRecipe}/>
+          )
+        }.bind(this))}
+      </div>
     )
   }
 };
