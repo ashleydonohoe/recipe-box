@@ -4,8 +4,8 @@ class AddRecipe extends Component {
   render() {
     return (
       <div>
-        <button className="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Add Recipe</button>
-        <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <button className="btn btn-primary btn-lg" data-toggle="modal" data-target="#addRecipe">Add Recipe</button>
+        <div className="modal fade" id="addRecipe" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">

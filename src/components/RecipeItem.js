@@ -27,7 +27,7 @@ class RecipeItem extends React.Component {
                       )
                     })}
                     <div className="button-group">
-                      <EditRecipe onEdit={this.props.editRecipe}/>
+                      <EditRecipe number={this.props.number} onEdit={this.props.editRecipe}/>
                       <button onClick={this.props.onDelete} className="btn btn-danger">Delete</button>
                     </div>
                   </div>

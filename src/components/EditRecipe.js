@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 class EditRecipe extends Component {
   render() {
+    const modalId = "editRecipe" + this.props.number;
     return (
       <div>
-        <button className="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit Recipe</button>
-        <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <button className="btn btn-primary" data-toggle="modal" data-target={"#" + modalId}>Edit Recipe</button>
+        <div className="modal fade" id={modalId} tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
