@@ -18,13 +18,16 @@ class RecipeList extends React.Component {
 
   render() {
     const recipes = this.props.recipes;
+    console.log(recipes);
     return (
       <div>
-        {recipes.map(function(recipe, index) {
+      {this.props.recipes === null ? console.log("no recipes yet") :
+        this.props.recipes.map(function(recipe, index) {
           return (
             <RecipeItem number={index} key={index} recipe={recipe} onEdit={this.editRecipe} onDelete={this.deleteRecipe}/>
           )
-        }.bind(this))}
+        }.bind(this))
+      }
       </div>
     )
   }
