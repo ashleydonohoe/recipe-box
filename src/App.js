@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import RecipeList from "./components/RecipeList";
-import Recipes from "./Recipes";
 import AddRecipe from "./components/AddRecipe";
 
 class App extends Component {
@@ -8,16 +7,34 @@ class App extends Component {
     super(props);
 
     this.state = {
-      recipes: Recipes
+      recipes: []
     }
+  }
+
+  componentDidMount() {
+    // Fetch recipes from local storage
+    this.fetchRecipes();
   }
 
   addRecipe(recipe) {
     console.log("Adding recipe");
     const newState = this.state.recipes.concat(recipe);
+    // Set new value for local storage with new recipe
+    localStorage.setItem("recipes", JSON.stringify(newState));
     this.setState({
       recipes: newState
     })
+  }
+
+  fetchRecipes() {
+    const recipes = JSON.parse(localStorage.getItem("recipes"));
+    if(recipes != null) {
+      this.setState({
+        recipes: recipes
+      });
+    } else {
+      localStorage.setItem("recipes", JSON.stringify(this.state.recipes));
+    }
   }
 
   render() {

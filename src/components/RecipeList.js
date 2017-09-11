@@ -8,11 +8,11 @@ class RecipeList extends React.Component {
     this.deleteRecipe = this.deleteRecipe.bind(this);
   }
 
-  editRecipe() {
+  editRecipe(recipe) {
     console.log("Editing Recipe");
   }
 
-  deleteRecipe() {
+  deleteRecipe(recipe) {
     console.log("Deleting recipe");
   }
 

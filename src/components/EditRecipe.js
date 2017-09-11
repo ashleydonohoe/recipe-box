@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class EditRecipe extends Component {
   render() {
     const modalId = "editRecipe" + this.props.number;
+    const recipe = this.props.recipe;
     return (
       <div>
         <button className="btn btn-primary" data-toggle="modal" data-target={"#" + modalId}>Edit Recipe</button>
@@ -17,11 +18,11 @@ class EditRecipe extends Component {
               <form>
                 <div className="form-group">
                   <label>Recipe</label>
-                  <input type="text" className="form-control" id="recipe-name" aria-describedby="recipe-name" placeholder="Recipe Name"/>
+                  <input type="text" className="form-control" id="recipe-name" aria-describedby="recipe-name" placeholder="Recipe Name" value={recipe.name}/>
                 </div>
                 <div className="form-group">
                   <label>Ingredients</label>
-                  <input type="text" className="form-control ingredients-input" id="ingredients" placeholder="Enter ingredients, separated by commas"/>
+                  <input type="text" className="form-control ingredients-input" id="ingredients" placeholder="Enter ingredients, separated by commas" value={recipe.ingredients.join(", ")}/>
                 </div>
               </form>
               </div>
