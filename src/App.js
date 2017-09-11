@@ -16,8 +16,20 @@ class App extends Component {
     this.fetchRecipes();
   }
 
+  deleteRecipe(recipe) {
+    // Filter to make array not include the deleted recipe
+    const updatedRecipes = this.state.recipes.filter(checkedRecipe => {
+      return checkedRecipe.name.toLowerCase() !== recipe.name.toLowerCase()
+    });
+    // Update local storage
+    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+    // Update state
+    this.setState({
+      recipes: updatedRecipes
+    })
+  }
+
   addRecipe(recipe) {
-    console.log("Adding recipe");
     const newState = this.state.recipes.concat(recipe);
     // Set new value for local storage with new recipe
     localStorage.setItem("recipes", JSON.stringify(newState));
@@ -41,7 +53,7 @@ class App extends Component {
     return (
       <div className="container">
         <h1 className="text-center">Recipe Box</h1>
-        <RecipeList recipes={this.state.recipes}/>
+        <RecipeList recipes={this.state.recipes} onDelete={this.deleteRecipe.bind(this)}/>
         <AddRecipe onAdd={this.addRecipe.bind(this)}/>
       </div>
     );

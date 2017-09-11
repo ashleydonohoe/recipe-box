@@ -2,11 +2,17 @@ import React from 'react';
 import EditRecipe from "./EditRecipe";
 
 class RecipeItem extends React.Component {
+  deletePressed() {
+    this.props.onDelete({
+      name: this.props.recipe.name,
+      ingredients: this.props.recipe.ingredients
+    });
+  }
+
   render() {
     const name = this.props.recipe.name;
     const ingredients = this.props.recipe.ingredients;
     const collapseId = "collapse" + this.props.number;
-
     return (
       <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
           <div className="panel panel-default">
@@ -28,7 +34,7 @@ class RecipeItem extends React.Component {
                     })}
                     <div className="button-group">
                       <EditRecipe recipe={this.props.recipe} number={this.props.number} onEdit={this.props.editRecipe}/>
-                      <button onClick={this.props.onDelete} className="btn btn-danger">Delete</button>
+                      <button onClick={this.deletePressed.bind(this)} className="btn btn-danger">Delete</button>
                     </div>
                   </div>
               </div>
