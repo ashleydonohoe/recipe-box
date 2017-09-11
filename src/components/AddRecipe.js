@@ -30,10 +30,15 @@ class AddRecipe extends Component {
       ingredients: ingredients
     };
 
-    this.props.onAdd(recipe);
+    // Check if recipe is complete
+    if(recipe.name !== "" && ingredients.length > 0) {
+      this.props.onAdd(recipe);
 
-    //TODO: Find a way to Hide the modal
-    $("#closeBtn").click();
+      // Stimulate close button to automatically close the modal
+      $("#closeBtn").click();
+    } else {
+      alert("Be sure to enter a name and ingredients!");
+    }
   }
 
   render() {

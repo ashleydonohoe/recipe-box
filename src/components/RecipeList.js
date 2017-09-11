@@ -16,7 +16,7 @@ class RecipeList extends React.Component {
     console.log(recipes);
     return (
       <div>
-      {this.props.recipes === null ? console.log("no recipes yet") :
+      {this.props.recipes === null || this.props.recipes.length < 1 ? <h2>No recipes yet... Add one!</h2> :
         this.props.recipes.map(function(recipe, index) {
           return (
             <RecipeItem number={index} key={index} recipe={recipe} onEdit={this.editRecipe} onDelete={this.props.onDelete}/>
