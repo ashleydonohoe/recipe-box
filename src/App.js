@@ -19,7 +19,7 @@ class App extends Component {
   deleteRecipe(recipe) {
     // Filter to make array not include the deleted recipe
     const updatedRecipes = this.state.recipes.filter(checkedRecipe => {
-      return checkedRecipe.name.toLowerCase() !== recipe.name.toLowerCase()
+      return (checkedRecipe.name.toLowerCase() !== recipe.name.toLowerCase())
     });
     // Update local storage
     localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
