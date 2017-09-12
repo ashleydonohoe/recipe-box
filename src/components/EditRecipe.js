@@ -8,7 +8,6 @@ class EditRecipe extends Component {
       name: this.props.recipe.name,
       ingredients: this.props.recipe.ingredients
     }
-    console.log(this.state.ingredients);
 
     this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this);
   }
@@ -33,13 +32,10 @@ class EditRecipe extends Component {
       ingredients: this.state.ingredients
     };
 
-    console.log(recipe.ingredients.length);
     // Check if recipe is complete
     if(recipe.name !== "" && recipe.ingredients.length > 0) {
-      this.props.onEdit(recipe);
-
-      // Stimulate close button to automatically close the modal
-      $("#closeBtn2").click();
+      this.props.onEdit(recipe, this.props.number);
+      $("#close-edit").click();
     } else {
       alert("Be sure to include both a name and ingredients");
     }
@@ -71,7 +67,7 @@ class EditRecipe extends Component {
                 </div>
                 <div className="modal-footer">
                   <button type="submit" className="btn btn-primary">Save Recipe</button>
-                  <button id="closeBtn2" type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button id="close-edit" type="button" className="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
               </form>
               </div>

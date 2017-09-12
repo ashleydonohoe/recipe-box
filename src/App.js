@@ -29,15 +29,19 @@ class App extends Component {
     })
   }
 
-  editRecipe(recipe) {
-    console.log("Editing recipe");
-    // Find position in array
-
-    // Update values in the array
+  editRecipe(recipe, index) {
+    // Find position in array and update value
+    const recipes = this.state.recipes;
+    recipes[index] = recipe;
+    console.log(recipes);
 
     // set local storage
+    localStorage.setItem("recipes", JSON.stringify(recipes));
 
     // update application state
+    this.setState({
+      recipes: recipes
+    });
   }
 
   addRecipe(recipe) {
