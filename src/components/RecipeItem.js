@@ -33,7 +33,7 @@ class RecipeItem extends React.Component {
                       )
                     })}
                     <div className="button-group">
-                      <EditRecipe recipe={this.props.recipe} number={this.props.number} onEdit={this.props.editRecipe}/>
+                      <EditRecipe recipe={this.props.recipe} number={this.props.number} onEdit={this.props.onEdit}/>
                       <button onClick={this.deletePressed.bind(this)} className="btn btn-danger">Delete</button>
                     </div>
                   </div>

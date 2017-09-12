@@ -1,9 +1,52 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 class EditRecipe extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: this.props.recipe.name,
+      ingredients: this.props.recipe.ingredients
+    }
+    console.log(this.state.ingredients);
+
+    this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this);
+  }
+
+  handleNameChange(e) {
+    this.setState({
+      name: e.target.value
+    });
+  }
+
+  handleIngredientsChange(e) {
+    const ingredients = e.target.value.split(",");
+    this.setState({
+      ingredients: ingredients
+    })
+  }
+
+  handleUpdateSubmit(e) {
+    e.preventDefault();
+    const recipe = {
+      name: this.state.name,
+      ingredients: this.state.ingredients
+    };
+
+    console.log(recipe.ingredients.length);
+    // Check if recipe is complete
+    if(recipe.name !== "" && recipe.ingredients.length > 0) {
+      this.props.onEdit(recipe);
+
+      // Stimulate close button to automatically close the modal
+      $("#closeBtn2").click();
+    } else {
+      alert("Be sure to include both a name and ingredients");
+    }
+  }
+
   render() {
     const modalId = "editRecipe" + this.props.number;
-    const recipe = this.props.recipe;
     return (
       <div>
         <button className="btn btn-primary" data-toggle="modal" data-target={"#" + modalId}>Edit Recipe</button>
@@ -15,20 +58,22 @@ class EditRecipe extends Component {
                 <h4 className="modal-title" id="myModalLabel">Edit Recipe</h4>
               </div>
               <div className="modal-body">
-              <form>
+              <form onSubmit={this.handleUpdateSubmit}>
                 <div className="form-group">
                   <label>Recipe</label>
-                  <input type="text" className="form-control" id="recipe-name" aria-describedby="recipe-name" placeholder="Recipe Name" value={recipe.name}/>
+                  <input type="text" className="form-control" id="recipe-name" aria-describedby="recipe-name" placeholder="Recipe Name" value={this.state.name}
+                  onChange={this.handleNameChange.bind(this)}/>
                 </div>
                 <div className="form-group">
                   <label>Ingredients</label>
-                  <input type="text" className="form-control ingredients-input" id="ingredients" placeholder="Enter ingredients, separated by commas" value={recipe.ingredients.join(", ")}/>
+                  <input type="text" className="form-control ingredients-input" id="ingredients" placeholder="Enter ingredients, separated by commas" value={this.state.ingredients}
+                  onChange={this.handleIngredientsChange.bind(this)}/>
+                </div>
+                <div className="modal-footer">
+                  <button type="submit" className="btn btn-primary">Save Recipe</button>
+                  <button id="closeBtn2" type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
               </form>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-primary">Save Recipe</button>
-                <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
               </div>
             </div>
           </div>

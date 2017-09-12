@@ -17,21 +17,21 @@ class AddRecipe extends Component {
   }
 
   handleIngredientsChange(e) {
+    const ingredients = e.target.value.split(",");
     this.setState({
-      ingredients: e.target.value
+      ingredients: ingredients
     })
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const ingredients = this.state.ingredients.split(",");
     const recipe = {
       name: this.state.name,
-      ingredients: ingredients
+      ingredients: this.state.ingredients
     };
 
     // Check if recipe is complete
-    if(recipe.name !== "" && ingredients.length > 0) {
+    if(recipe.name !== "" && this.state.ingredients.length > 0) {
       this.props.onAdd(recipe);
 
       // Stimulate close button to automatically close the modal

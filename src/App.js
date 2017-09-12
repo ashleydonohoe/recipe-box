@@ -29,6 +29,17 @@ class App extends Component {
     })
   }
 
+  editRecipe(recipe) {
+    console.log("Editing recipe");
+    // Find position in array
+
+    // Update values in the array
+
+    // set local storage
+
+    // update application state
+  }
+
   addRecipe(recipe) {
     const newState = this.state.recipes.concat(recipe);
     // Set new value for local storage with new recipe
@@ -53,7 +64,7 @@ class App extends Component {
     return (
       <div className="container">
         <h1 className="text-center">Recipe Box</h1>
-        <RecipeList recipes={this.state.recipes} onDelete={this.deleteRecipe.bind(this)}/>
+        <RecipeList recipes={this.state.recipes} onEdit={this.editRecipe.bind(this)} onDelete={this.deleteRecipe.bind(this)}/>
         <AddRecipe onAdd={this.addRecipe.bind(this)}/>
       </div>
     );
