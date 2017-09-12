@@ -51,7 +51,7 @@ class EditRecipe extends Component {
             <div className="modal-content">
               <div className="modal-header">
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 className="modal-title" id="myModalLabel">Edit Recipe</h4>
+                <h4 className="modal-title" id="myModalLabel2">Edit Recipe</h4>
               </div>
               <div className="modal-body">
               <form onSubmit={this.handleUpdateSubmit}>
