@@ -34,6 +34,11 @@ class AddRecipe extends Component {
     if(recipe.name !== "" && this.state.ingredients.length > 0) {
       this.props.onAdd(recipe);
 
+      this.setState({
+        name: "",
+        ingredients: ""
+      });
+
       // Stimulate close button to automatically close the modal
       $("#closeBtn").click();
     } else {
